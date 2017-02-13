@@ -6,6 +6,7 @@
 using namespace std;
 
 class Part { //&m
+//&b=
 
   public:
 
@@ -42,6 +43,7 @@ class Part { //&m
 
 };
 
+//&i
 Part :: Part() //&m
 {
   sName = "N/A";
@@ -54,6 +56,7 @@ Part :: Part() //&m
   iTotal = 0;
 }
 
+//&i
 Part :: Part(string sName)
 {
   this -> sName = sName;
@@ -66,81 +69,97 @@ Part :: Part(string sName)
   iTotal = 0;
 }
 
+//&i
 void Part :: setName(string sName) //&m
 {
   this -> sName = sName;
 }
 
+//&i
 void Part :: setType(string sType) //&m
 {
   this -> sType = sType; //&m
 }
 
+//&i
 void Part :: setItems(int iItems) //&m
 {
   this -> iItems = iItems; //&m
 }
 
+//&i
 void Part :: setBase(int iBase)
 {
   this -> iBase = iBase;
 }
 
+//&i
 void Part :: setMod(int iMod)
 {
   this -> iMod = iMod;
 }
 
+//&i
 void Part :: setDel(int iDel)
 {
   this -> iDel = iDel;
 }
 
+//&i
 void Part :: setAdded(int iAdded)
 {
   this -> iAdded = iAdded;
 }
 
+//&i
 void Part :: setTotal(int iTotal)
 {
   this -> iTotal = iTotal;
 }
 
+//&i
 string Part :: getName() //&m
 {
   return sName;
 }
 
+//&i
 string Part :: getType() //&m
 {
   return sType; //&m
 }
 
+//&i
 int Part :: getItems()
 {
   return iItems;
 }
 
+//&i
 int Part :: getBase()
 {
   return iBase;
 }
 
+//&i
 int Part :: getMod()
 {
   return iMod;
 }
 
+//&i
 int Part :: getDel()
 {
   return iDel;
 }
 
+//&i
 int Part :: getAdded()
 {
   return iAdded;
 }
 
+//&i
 int Part :: getTotal()
 {
   return iTotal;
