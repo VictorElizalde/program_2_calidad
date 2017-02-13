@@ -1,0 +1,14 @@
+Se busca por todos los tipos de etiqueta primero
+
+  al encontrarse uno de ellos, se revisa si su posicion no esta entre 2 comillas, se revisa que el primer comilla este antes de el tag
+  luego se cambia ese comilla por espacio en blanco y se busca que el segundo comilla este despues del tag
+
+Detectar comentario varios
+
+  Si el caracter "/*" se encuentra se entra en una rutina de seguir recogiendo lineas sin contarlas
+    hasta encontrar el caracter "*/"
+
+      La rutina se detiene al encontrar el caracter "*/"
+
+Detectar comentario normal
+  Si el caracter "//" se encuentra en la posicion inicial entonces no se cuenta linea
