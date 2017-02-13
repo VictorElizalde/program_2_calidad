@@ -1,3 +1,28 @@
+clase parte
+
+  atributos:
+    nombre
+    tipo de parte(agregada, base, reusada)
+    items
+    lineas Total
+    lineas base
+    lineas modificadas
+    lineas borradas
+    lineas agregadas
+
+  hace todos los procesos necesarios para cada parte
+
+
+clase operation
+
+  no tiene atributos
+  imprime resultados
+
+clase main
+
+  se encarga de el proceso en general
+
+
 Por cada linea se hace este proceso
 
   limpiar linea
@@ -25,8 +50,18 @@ Por cada linea se hace este proceso
 
       Dependiendo del tipo de tag se realiza una accion diferente y se cuenta la linea en LDC global
 
-      Si se encuentra la etiqueta de parte entonces se crea un objeto nuevo de parte
+      Si se encuentra la etiqueta de parte entonces se crea un objeto nuevo de parte y se mete al vector de partes
+      y se entra en otra rutina que sigue contando las lineas y asignando sus valores a esa parte, modifica el valor de las ldc globales
+      y las de la parte
+
+        se vuelve a checar por comentarios y todo eso en esta rutina
+        se sale de esta rutina cuando se acabe el archivo o se encuentre otra tag de parte
+
 
   else
 
     Se cuenta la linea en LDC global
+
+  se termina el archivo
+
+  se imprimen los resultados en pantalla y en el archivo nuevo
