@@ -1,14 +1,32 @@
-Se busca por todos los tipos de etiqueta primero
+Por cada linea se hace este proceso
 
-  al encontrarse uno de ellos, se revisa si su posicion no esta entre 2 comillas, se revisa que el primer comilla este antes de el tag
-  luego se cambia ese comilla por espacio en blanco y se busca que el segundo comilla este despues del tag
+  limpiar linea
 
-Detectar comentario varios
+  if
 
-  Si el caracter "/*" se encuentra se entra en una rutina de seguir recogiendo lineas sin contarlas
-    hasta encontrar el caracter "*/"
+  Detectar comentario varios
 
-      La rutina se detiene al encontrar el caracter "*/"
+    Si el caracter "/*" se encuentra se busca que este en esa linea el caracter "*/" si no se encuentra entonces
+    se entra en una rutina de seguir recogiendo lineas sin contarlas hasta encontrar el caracter "*/"
 
-Detectar comentario normal
-  Si el caracter "//" se encuentra en la posicion inicial entonces no se cuenta linea
+        La rutina se detiene al encontrar el caracter "*/"
+
+  else if
+
+    Detectar comentario normal
+      Si el caracter "//" se encuentra en la posicion inicial entonces no se cuenta linea
+
+  else if
+
+    Se busca por todos los tipos de etiqueta
+
+      al encontrarse uno de ellos, se revisa si su posicion no esta entre 2 comillas, se revisa que el primer comilla este antes de el tag
+      luego se cambia ese comilla por espacio en blanco y se busca que el segundo comilla este despues del tag
+
+      Dependiendo del tipo de tag se realiza una accion diferente y se cuenta la linea en LDC global
+
+      Si se encuentra la etiqueta de parte entonces se crea un objeto nuevo de parte
+
+  else
+
+    Se cuenta la linea en LDC global
