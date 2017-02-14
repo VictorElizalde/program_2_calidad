@@ -11,7 +11,7 @@ class Operation {
 
   public:
 		//&d=1
-		void printPart(Part &pPart); //&m
+		void detectType(Part &pPart); //&m
 		void printSummary(int iNumArchivos, int iLineasBlanco, int iLineasNegro); //%m
 };
 
@@ -20,7 +20,21 @@ class Operation {
 //&i
 void Operation :: detectType(vector<Part> &vParts)
 {
-
+	for(int i = 0; i < vParts.size(); i++)
+	{
+		if (vParts[i].getDel() != 0)
+		{
+			vParts[i].setType("Base");
+		}
+		else if(vParts[i].getBase() != 0)
+		{
+			vParts[i].setType("Reused");
+		}
+		else
+		{
+			vParts[i].setType("New");
+		}
+	}
 }
 
 
@@ -41,7 +55,6 @@ void Operation :: printSummary(vector<Part> vParts, int iLDCTot)
 			cout << ", M=" << vParts[i].getMod();
 			cout << ", A=" << vParts[i].getAdded() << endl;
 		}
-		myvector.erase(myvector.begin()+i);
 	}
 
 	cout << "--------------------------------------------------" << endl;
@@ -55,7 +68,6 @@ void Operation :: printSummary(vector<Part> vParts, int iLDCTot)
 			cout << " T=" << vParts[i].getTotal();
 			cout << ", I=" << vParts[i].getItems() << endl;
 		}
-		myvector.erase(myvector.begin()+i);
 	}
 
 	cout << "--------------------------------------------------" << endl;
@@ -70,7 +82,6 @@ void Operation :: printSummary(vector<Part> vParts, int iLDCTot)
 			cout << ", I=" << vParts[i].getItems();
 			cout << ", B=" << vParts[i].getBase() << endl;
 		}
-		myvector.erase(myvector.begin()+i);
 	}
 
 	cout << "--------------------------------------------------" << endl;
