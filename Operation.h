@@ -15,6 +15,14 @@ class Operation {
 
 //&d=10
 
+//&i
+void Operation :: detectType(vector<Part> &vParts)
+{
+
+}
+
+
+//&i
 // Imprime la informacion general de todos los archivos juntos
 void Operation :: printSummary(vector<Part> vParts, int iLDCTot)
 {
@@ -24,10 +32,10 @@ void Operation :: printSummary(vector<Part> vParts, int iLDCTot)
 		if(vParts[i].getType() == "Base")
 		{
 			cout << vParts[i].getName();
-			cout << " T=" << vParts[i].getTotal();
-			cout << ", I=" << vParts[i].getItems();
-			cout << ", B=" << vParts[i].getBase();
-			cout << ", D=" << vParts[i].getDel();
+			cout << " T=" << vParts[i].getTotal(); //&m
+			cout << ", I=" << vParts[i].getItems(); //&m
+			cout << ", B=" << vParts[i].getBase(); //&m
+			cout << ", D=" << vParts[i].getDel(); //&m
 			cout << ", M=" << vParts[i].getMod();
 			cout << ", A=" << vParts[i].getAdded() << endl;
 		}
