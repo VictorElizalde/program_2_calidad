@@ -5,6 +5,8 @@
 
 using namespace std;
 
+//&p-Operation
+//&b=5
 class Operation {
 
   public:

@@ -3,17 +3,12 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-#include "File.h"
+#include "Part.h" //&m
 #include "Operation.h"
 
-// Struct para poder ordenar el vector de acuerdo al atributo getLineasNegro
-// Los parametros son los 2 files a comparar
-struct NumLines{
-    inline bool operator() (File &fFile1, File &fFile2) {
-        return (fFile1.getLineasNegro() < fFile2.getLineasNegro());
-    }
-};
+//&d=4
 
+//&i
 // Funcion que elimina todos los espacios en blanco de una linea
 // Recibe de parametro la linea a limpiar
 string DeleteSpaces(string sLine)
@@ -31,6 +26,8 @@ string DeleteSpaces(string sLine)
   return sAux;
 }
 
+//&p-main
+//&b=26
 // Control general del programa para obetener los datos y el resultado
 int main () {
 
