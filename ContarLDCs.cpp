@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <algorithm>
 using namespace std;
 #include "Part.h" //&m
 #include "Operation.h"
@@ -73,11 +72,33 @@ int main () {
           if(sLine.find("//&") == 0)
           {
             //hacer accion correspondiente
+            if(sLine.find("//&p-") != string::npos)
+            {
+
+            }
+            else if(sLine.find("//&b=") != string::npos)
+            {
+
+            }
+            else if(sLine.find("//&d=") != string::npos)
+            {
+
+            }
+            else if(sLine.find("//&i") != string::npos)
+            {
+
+            }
+            else if(sLine.find("//&m") != string::npos)
+            {
+
+            }
           }
           else if(sLine.find("//") != 0)
           {
-            //checa comillas
-            //hacer accion correspondiente
+            if(sLine.find("//&")+3 == sLine.length())
+            {
+              //hacer accion correspondiente
+            }
           }
         }
         else if(sLine.find("//") != string::npos)
@@ -97,16 +118,16 @@ int main () {
         }
         //&d=1
       }
-      vParts.push_back(pPartAux); //&m
-      pPartAux.setName("N/A"); //&m
-      pPartAux.setType("N/A"); //&m
-      pPartAux.setItems(0); //&m
-      pPartAux.setBase(0);
-      pPartAux.setMod(0);
-      pPartAux.setDel(0);
-      pPartAux.setAdded(0);
-      pPartAux.setTotal(0);
-      pPartAux.set(0);
+      // vParts.push_back(pPartAux); //&m
+      // pPartAux.setName("N/A"); //&m
+      // pPartAux.setType("N/A"); //&m
+      // pPartAux.setItems(0); //&m
+      // pPartAux.setBase(0);
+      // pPartAux.setMod(0);
+      // pPartAux.setDel(0);
+      // pPartAux.setAdded(0);
+      // pPartAux.setTotal(0);
+      // pPartAux.set(0);
       InputFile.close();
     }
     else

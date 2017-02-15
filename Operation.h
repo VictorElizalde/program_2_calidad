@@ -11,8 +11,8 @@ class Operation {
 
   public:
 		//&d=1
-		void detectType(Part &pPart); //&m
-		void printSummary(int iNumArchivos, int iLineasBlanco, int iLineasNegro); //%m
+		void detectType(vector<Part> &vParts); //&m
+		void printSummary(vector<Part> vParts, int iLDCTot); //%m
 };
 
 //&d=10
