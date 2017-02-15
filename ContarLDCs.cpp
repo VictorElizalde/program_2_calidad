@@ -74,7 +74,23 @@ int main () {
             //hacer accion correspondiente
             if(sLine.find("//&p-") != string::npos)
             {
-
+              if(vPartAux.getName() != "N/A")
+              {
+                vPartAux.setName(sLine.substr(sLine.find("//&p-")+5,sLine.length()-sLine.find("//&p-")+4));
+              }
+              else
+              {
+                vParts.push_back(pPartAux); //&m
+                pPartAux.setName("N/A"); //&m
+                pPartAux.setType("N/A"); //&m
+                pPartAux.setItems(0); //&m
+                pPartAux.setBase(0);
+                pPartAux.setMod(0);
+                pPartAux.setDel(0);
+                pPartAux.setAdded(0);
+                pPartAux.setTotal(0);
+                vPartAux.setName(sLine.substr(sLine.find("//&p-")+5,sLine.length()-sLine.find("//&p-")+4));
+              }
             }
             else if(sLine.find("//&b=") != string::npos)
             {
@@ -98,6 +114,26 @@ int main () {
             if(sLine.find("//&")+3 == sLine.length())
             {
               //hacer accion correspondiente
+              if(sLine.find("//&p-") != string::npos)
+              {
+
+              }
+              else if(sLine.find("//&b=") != string::npos)
+              {
+
+              }
+              else if(sLine.find("//&d=") != string::npos)
+              {
+
+              }
+              else if(sLine.find("//&i") != string::npos)
+              {
+
+              }
+              else if(sLine.find("//&m") != string::npos)
+              {
+
+              }
             }
           }
         }
@@ -118,16 +154,7 @@ int main () {
         }
         //&d=1
       }
-      // vParts.push_back(pPartAux); //&m
-      // pPartAux.setName("N/A"); //&m
-      // pPartAux.setType("N/A"); //&m
-      // pPartAux.setItems(0); //&m
-      // pPartAux.setBase(0);
-      // pPartAux.setMod(0);
-      // pPartAux.setDel(0);
-      // pPartAux.setAdded(0);
-      // pPartAux.setTotal(0);
-      // pPartAux.set(0);
+
       InputFile.close();
     }
     else
