@@ -56,18 +56,6 @@ Part :: Part() //&m
   iTotal = 0;
 }
 
-Part :: Part(string sName)
-{
-  this -> sName = sName;
-  sType = "N/A";
-  iItems = 0;
-  iBase = 0;
-  iMod = 0;
-  iDel = 0;
-  iAdded = 0;
-  iTotal = 0;
-}
-
 void Part :: setName(string sName) //&m
 {
   this -> sName = sName;

@@ -1,10 +1,11 @@
 
 #include<iostream>
+#include <fstream>
 using namespace std;
 
 int main()
 {
-  string str ("\"comen//tario\"");
+  string str ("\"comentario\"");
 
   if (str.find("//") != string::npos)
   {
@@ -12,7 +13,31 @@ int main()
     cout << str.find("\"") << endl;
     str[str.find("\"")] = ' ';
     cout << str.find("\"") << endl;
-    // cout << str[0] << endl;
+    cout << str[0] << endl;
+  }
+
+  string sLine;
+  ifstream InputFile ("testsintags.src");
+
+  if (InputFile.is_open())
+  {
+    while(getline(InputFile, sLine))
+    {
+      cout << sLine << endl;
+      while(getline(InputFile, sLine))
+      {
+        if(true)
+        {
+          cout << sLine << endl;
+          break;
+        }
+      }
+    }
+    InputFile.close();
+  }
+  else
+  {
+    cout << endl << " no existe\n\n";
   }
 
   return 0;

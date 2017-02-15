@@ -27,15 +27,15 @@ string DeleteSpaces(string sLine)
 }
 
 //&p-main
-//&b=26
+//&b=44
 // Control general del programa para obetener los datos y el resultado
 int main () {
 
-  int iNumberFiles, iNumArchivos = 0, iLineasBlanco = 0, iLineasNegro = 0;
+  int iNumberFiles, iNumArchivos = 0, iLDCTot = 0; //&m
 	string sFileName, sLine;
   Operation oOperation;
-  File fFileAux;
-  vector<File> vMyfiles;
+  Part pPartAux; //&m
+  vector<Part> vParts; //&m
 
 	cout << "Cuantos archivos vas a analizar?\n";
 	cin >> iNumberFiles;
@@ -46,19 +46,67 @@ int main () {
   {
     cin >> sFileName;
     ifstream InputFile (sFileName);
-    fFileAux.setName(sFileName);
+    //&d=1
 
     if (InputFile.is_open())
     {
       while(getline(InputFile, sLine))
       {
         sLine = DeleteSpaces(sLine);
-        oOperation.countLines(fFileAux, sLine);
+
+        if(sLine.find("/*") != string::npos)
+        {
+           if(!(sLine.find("*/") != string::npos))
+           {
+             while(getline(InputFile, sLine))
+             {
+               sLine = DeleteSpaces(sLine);
+               if(sLine.find("*/") != string::npos)
+               {
+                 break;
+               }
+             }
+           }
+        }
+        else if(sLine.find("//&") != string::npos)
+        {
+          if(sLine.find("//&") == 0)
+          {
+            //hacer accion correspondiente
+          }
+          else if(sLine.find("//") != 0)
+          {
+            //checa comillas
+            //hacer accion correspondiente
+          }
+        }
+        else if(sLine.find("//") != string::npos)
+        {
+          if(sLine.find("//") != 0)
+          {
+            iLDCTot++;
+          }
+        }
+        else if(!(sLine.length() == 1))
+        {
+          iLDCTot++;
+        }
+        else
+        {
+          iLDCTot++;
+        }
+        //&d=1
       }
-      vMyfiles.push_back(fFileAux);
-      fFileAux.setName("N/A");
-      fFileAux.setLineasBlanco(0);
-      fFileAux.setLineasNegro(0);
+      vParts.push_back(pPartAux); //&m
+      pPartAux.setName("N/A"); //&m
+      pPartAux.setType("N/A"); //&m
+      pPartAux.setItems(0); //&m
+      pPartAux.setBase(0);
+      pPartAux.setMod(0);
+      pPartAux.setDel(0);
+      pPartAux.setAdded(0);
+      pPartAux.setTotal(0);
+      pPartAux.set(0);
       InputFile.close();
     }
     else
@@ -68,16 +116,16 @@ int main () {
   }
 
 
-  sort(vMyfiles.begin(), vMyfiles.end(), NumLines());
-
-  iNumArchivos = vMyfiles.size();
-  for (int i = 0; i < vMyfiles.size(); i++)
-  {
-    iLineasBlanco += vMyfiles[i].getLineasBlanco();
-    iLineasNegro += vMyfiles[i].getLineasNegro();
-    oOperation.printFiles(vMyfiles[i]);
-  }
-
-  oOperation.printSummary(iNumArchivos, iLineasBlanco, iLineasNegro);
+  // sort(vMyfiles.begin(), vMyfiles.end(), NumLines());
+  //
+  // iNumArchivos = vMyfiles.size();
+  // for (int i = 0; i < vMyfiles.size(); i++)
+  // {
+  //   iLineasBlanco += vMyfiles[i].getLineasBlanco();
+  //   iLineasNegro += vMyfiles[i].getLineasNegro();
+  //   oOperation.printFiles(vMyfiles[i]);
+  // }
+  //
+  // oOperation.printSummary(iNumArchivos, iLineasBlanco, iLineasNegro);
   return 0;
 }
