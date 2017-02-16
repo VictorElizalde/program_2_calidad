@@ -31,7 +31,8 @@ string DeleteSpaces(string sLine)
 int main () {
 
   int iNumberFiles, iNumArchivos = 0, iLDCTot = 0; //&m
-	string sFileName, sLine;
+  bool bPartFound = false;
+	string sFileName, sLine, sAuxName;
   Operation oOperation;
   Part pPartAux; //&m
   vector<Part> vParts; //&m
@@ -74,22 +75,46 @@ int main () {
             //hacer accion correspondiente
             if(sLine.find("//&p-") != string::npos)
             {
-              if(vPartAux.getName() != "N/A")
+              if(pPartAux.getName() == "N/A")
               {
-                vPartAux.setName(sLine.substr(sLine.find("//&p-")+5,sLine.length()-sLine.find("//&p-")+4));
+                pPartAux.setName(sLine.substr(sLine.find("//&p-")+5,sLine.length()-sLine.find("//&p-")+4));
+                cout << "Guardo 1" << endl;
               }
               else
               {
-                vParts.push_back(pPartAux); //&m
-                pPartAux.setName("N/A"); //&m
-                pPartAux.setType("N/A"); //&m
-                pPartAux.setItems(0); //&m
-                pPartAux.setBase(0);
-                pPartAux.setMod(0);
-                pPartAux.setDel(0);
-                pPartAux.setAdded(0);
-                pPartAux.setTotal(0);
-                vPartAux.setName(sLine.substr(sLine.find("//&p-")+5,sLine.length()-sLine.find("//&p-")+4));
+                sAuxName = sLine.substr(sLine.find("//&p-")+5,sLine.length()-sLine.find("//&p-")+4);
+                cout << sAuxName << endl;
+                for(int i = 0; i < vParts.size(); i++)
+                {
+                  if(vParts[i].getName() == sAuxName)
+                  {
+                    cout << "Hola" << endl;
+                    pPartAux.setName(sAuxName); //&m
+                    pPartAux.setItems(vParts[i].getItems()); //&m
+                    pPartAux.setBase(vParts[i].getBase()); //&m
+                    pPartAux.setMod(vParts[i].getMod()); //&m
+                    pPartAux.setDel(vParts[i].getDel());
+                    pPartAux.setAdded(vParts[i].getAdded());
+                    pPartAux.setTotal(vParts[i].getTotal());
+                    // vParts.erase(vParts.begin()+i);
+                    bPartFound = true;
+                  }
+                }
+
+                if(!bPartFound)
+                {
+                  cout << "Guardo 2" << endl;
+                  cout << pPartAux.getName() << endl;
+                  vParts.push_back(pPartAux);
+                  pPartAux.setName(sAuxName);
+                  pPartAux.setItems(0);
+                  pPartAux.setBase(0);
+                  pPartAux.setMod(0);
+                  pPartAux.setDel(0);
+                  pPartAux.setAdded(0);
+                  pPartAux.setTotal(0);
+                  bPartFound = false;
+                }
               }
             }
             else if(sLine.find("//&b=") != string::npos)
@@ -144,7 +169,7 @@ int main () {
             iLDCTot++;
           }
         }
-        else if(!(sLine.length() == 1))
+        else if(!(sLine.length() <= 1))
         {
           iLDCTot++;
         }
@@ -154,13 +179,25 @@ int main () {
         }
         //&d=1
       }
-
       InputFile.close();
     }
     else
     {
       cout << endl << sFileName << " no existe\n\n";
     }
+  }
+
+  for(int i = 0; i < vParts.size(); i++)
+  {
+    cout << "Parte: " << endl;
+    cout << vParts[i].getName() << endl;
+    cout << vParts[i].getType() << endl;
+    cout << vParts[i].getItems() << endl;
+    cout << vParts[i].getBase() << endl;
+    cout << vParts[i].getDel() << endl;
+    cout << vParts[i].getMod() << endl;
+    cout << vParts[i].getAdded() << endl;
+    cout << vParts[i].getTotal() << endl;
   }
 
 
