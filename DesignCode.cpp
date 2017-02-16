@@ -1,10 +1,15 @@
 
-#include<iostream>
+#include <iostream>
 #include <fstream>
+#include <string>
 using namespace std;
 
 int main()
 {
+
+  string s = "24";
+  cout << stoi(s)+1 << endl;
+
   string str ("\"comentario\"");
 
   if (str.find("//") != string::npos)

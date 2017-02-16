@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <string>
 using namespace std;
 #include "Part.h" //&m
 #include "Operation.h"
@@ -115,45 +116,24 @@ int main () {
             }
             else if(sLine.find("//&b=") != string::npos)
             {
-
+              pPartAux.setBase(pPartAux.getBase() + stoi(sLine.substr(sLine.find("//&b=")+5, sLine.length()-sLine.find("//&b=")+4)));
             }
             else if(sLine.find("//&d=") != string::npos)
             {
-
+              pPartAux.setDel(pPartAux.getDel() + stoi(sLine.substr(sLine.find("//&d=")+5, sLine.length()-sLine.find("//&d=")+4)));
             }
             else if(sLine.find("//&i") != string::npos)
             {
-
-            }
-            else if(sLine.find("//&m") != string::npos)
-            {
-
+              pPartAux.setItems(pPartAux.getItems()+1);
             }
           }
           else if(sLine.find("//") != 0)
           {
-            if(sLine.find("//&")+3 == sLine.length())
+            if(sLine.find("//&m") != string::npos)
             {
-              //hacer accion correspondiente
-              if(sLine.find("//&p-") != string::npos)
+              if(sLine.find("//&m")+3 == sLine.length()-1)
               {
-
-              }
-              else if(sLine.find("//&b=") != string::npos)
-              {
-
-              }
-              else if(sLine.find("//&d=") != string::npos)
-              {
-
-              }
-              else if(sLine.find("//&i") != string::npos)
-              {
-
-              }
-              else if(sLine.find("//&m") != string::npos)
-              {
-
+                pPartAux.setMod(pPartAux.getMod()+1);
               }
             }
           }
@@ -162,15 +142,27 @@ int main () {
         {
           if(sLine.find("//") != 0)
           {
+            if(pPartAux.getName() != "N/A")
+            {
+              pPartAux.setTotal(pPartAux.getTotal()+1);
+            }
             iLDCTot++;
           }
         }
-        else if(!(sLine.length() <= 1))
+        else if(sLine.length() > 1)
         {
+          if(pPartAux.getName() != "N/A")
+          {
+            pPartAux.setTotal(pPartAux.getTotal()+1);
+          }
           iLDCTot++;
         }
         else
         {
+          if(pPartAux.getName() != "N/A")
+          {
+            pPartAux.setTotal(pPartAux.getTotal()+1);
+          }
           iLDCTot++;
         }
         //&d=1
