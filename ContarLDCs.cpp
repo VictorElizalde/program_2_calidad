@@ -134,6 +134,13 @@ int main () {
               if(sLine.find("//&m")+3 == sLine.length()-1)
               {
                 pPartAux.setMod(pPartAux.getMod()+1);
+                pPartAux.setTotal(pPartAux.getTotal()+1);
+                iLDCTot++;
+              }
+              else
+              {
+                pPartAux.setTotal(pPartAux.getTotal()+1);
+                iLDCTot++;
               }
             }
           }
@@ -157,14 +164,6 @@ int main () {
           }
           iLDCTot++;
         }
-        else
-        {
-          if(pPartAux.getName() != "N/A")
-          {
-            pPartAux.setTotal(pPartAux.getTotal()+1);
-          }
-          iLDCTot++;
-        }
         //&d=1
       }
       InputFile.close();
@@ -173,35 +172,33 @@ int main () {
     {
       cout << endl << sFileName << " no existe\n\n";
     }
+    vParts.push_back(pPartAux);
+    pPartAux.setName("N/A");
+    pPartAux.setItems(0);
+    pPartAux.setBase(0);
+    pPartAux.setMod(0);
+    pPartAux.setDel(0);
+    pPartAux.setAdded(0);
+    pPartAux.setTotal(0);
   }
 
+  oOperation.detectType(vParts);
 
-  vParts.push_back(pPartAux);
-
-  for(int i = 0; i < vParts.size(); i++)
-  {
-    cout << "Parte: " << endl;
-    cout << vParts[i].getName() << endl;
-    cout << vParts[i].getType() << endl;
-    cout << vParts[i].getItems() << endl;
-    cout << vParts[i].getBase() << endl;
-    cout << vParts[i].getDel() << endl;
-    cout << vParts[i].getMod() << endl;
-    cout << vParts[i].getAdded() << endl;
-    cout << vParts[i].getTotal() << endl;
-  }
-
-
-  // sort(vMyfiles.begin(), vMyfiles.end(), NumLines());
-  //
-  // iNumArchivos = vMyfiles.size();
-  // for (int i = 0; i < vMyfiles.size(); i++)
+  // for(int i = 0; i < vParts.size(); i++)
   // {
-  //   iLineasBlanco += vMyfiles[i].getLineasBlanco();
-  //   iLineasNegro += vMyfiles[i].getLineasNegro();
-  //   oOperation.printFiles(vMyfiles[i]);
+  //   cout << "Parte: " << endl;
+  //   cout << vParts[i].getName() << endl;
+  //   cout << vParts[i].getType() << endl;
+  //   cout << vParts[i].getItems() << endl;
+  //   cout << vParts[i].getBase() << endl;
+  //   cout << vParts[i].getDel() << endl;
+  //   cout << vParts[i].getMod() << endl;
+  //   cout << vParts[i].getAdded() << endl;
+  //   cout << vParts[i].getTotal() << endl;
   // }
-  //
-  // oOperation.printSummary(iNumArchivos, iLineasBlanco, iLineasNegro);
+
+
+  //&d=6
+  oOperation.printSummary(vParts, iLDCTot); //&m
   return 0;
 }

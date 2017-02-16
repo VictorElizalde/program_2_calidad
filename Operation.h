@@ -25,6 +25,7 @@ void Operation :: detectType(vector<Part> &vParts)
 		if (vParts[i].getDel() != 0)
 		{
 			vParts[i].setType("Base");
+			vParts[i].setAdded(vParts[i].getTotal() - vParts[i].getBase() + vParts[i].getDel());
 		}
 		else if(vParts[i].getBase() != 0)
 		{
