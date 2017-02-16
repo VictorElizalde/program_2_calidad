@@ -183,21 +183,6 @@ int main () {
   }
 
   oOperation.detectType(vParts);
-
-  // for(int i = 0; i < vParts.size(); i++)
-  // {
-  //   cout << "Parte: " << endl;
-  //   cout << vParts[i].getName() << endl;
-  //   cout << vParts[i].getType() << endl;
-  //   cout << vParts[i].getItems() << endl;
-  //   cout << vParts[i].getBase() << endl;
-  //   cout << vParts[i].getDel() << endl;
-  //   cout << vParts[i].getMod() << endl;
-  //   cout << vParts[i].getAdded() << endl;
-  //   cout << vParts[i].getTotal() << endl;
-  // }
-
-
   //&d=6
   oOperation.printSummary(vParts, iLDCTot); //&m
   return 0;

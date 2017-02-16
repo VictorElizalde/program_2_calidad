@@ -43,7 +43,12 @@ void Operation :: detectType(vector<Part> &vParts)
 // Imprime la informacion general de todos los archivos juntos
 void Operation :: printSummary(vector<Part> vParts, int iLDCTot)
 {
+	ofstream OutputFile;
+	OutputFile.open ("Results.txt");
+
 	cout << "PARTES BASE: " << endl;
+	OutputFile << "PARTES BASE:" << endl;
+
 	for(int i = 0;  i < vParts.size(); i++)
 	{
 		if(vParts[i].getType() == "Base")
@@ -55,12 +60,22 @@ void Operation :: printSummary(vector<Part> vParts, int iLDCTot)
 			cout << ", D=" << vParts[i].getDel(); //&m
 			cout << ", M=" << vParts[i].getMod();
 			cout << ", A=" << vParts[i].getAdded() << endl;
+
+			OutputFile << vParts[i].getName();
+			OutputFile << " T=" << vParts[i].getTotal(); //&m
+			OutputFile << ", I=" << vParts[i].getItems(); //&m
+			OutputFile << ", B=" << vParts[i].getBase(); //&m
+			OutputFile << ", D=" << vParts[i].getDel(); //&m
+			OutputFile << ", M=" << vParts[i].getMod();
+			OutputFile << ", A=" << vParts[i].getAdded() << endl;
 		}
 	}
 
 	cout << "--------------------------------------------------" << endl;
+	OutputFile << "--------------------------------------------------" << endl;
 
 	cout << "PARTES NUEVAS: " << endl;
+	OutputFile << "PARTES NUEVAS: " << endl;
 	for(int i = 0;  i < vParts.size(); i++)
 	{
 		if(vParts[i].getType() == "New")
@@ -68,12 +83,19 @@ void Operation :: printSummary(vector<Part> vParts, int iLDCTot)
 			cout << vParts[i].getName();
 			cout << " T=" << vParts[i].getTotal();
 			cout << ", I=" << vParts[i].getItems() << endl;
+
+			OutputFile << vParts[i].getName();
+			OutputFile << " T=" << vParts[i].getTotal();
+			OutputFile << ", I=" << vParts[i].getItems() << endl;
 		}
 	}
 
 	cout << "--------------------------------------------------" << endl;
+	OutputFile << "--------------------------------------------------" << endl;
 
 	cout << "PARTES REUSADAS: " << endl;
+	OutputFile << "PARTES REUSADAS: " << endl;
+
 	for(int i = 0;  i < vParts.size(); i++)
 	{
 		if(vParts[i].getType() == "Reused")
@@ -82,11 +104,20 @@ void Operation :: printSummary(vector<Part> vParts, int iLDCTot)
 			cout << " T=" << vParts[i].getTotal();
 			cout << ", I=" << vParts[i].getItems();
 			cout << ", B=" << vParts[i].getBase() << endl;
+
+			OutputFile << vParts[i].getName();
+			OutputFile << " T=" << vParts[i].getTotal();
+			OutputFile << ", I=" << vParts[i].getItems();
+			OutputFile << ", B=" << vParts[i].getBase() << endl;
 		}
 	}
 
 	cout << "--------------------------------------------------" << endl;
+	OutputFile << "--------------------------------------------------" << endl;
 
 	//&d=3
 	cout << "Total de LDC=" << iLDCTot << endl; //&m
+	OutputFile << "Total de LDC=" << iLDCTot << endl; //&m
+
+	OutputFile.close();
 }
