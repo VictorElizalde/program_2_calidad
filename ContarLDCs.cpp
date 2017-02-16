@@ -78,17 +78,15 @@ int main () {
               if(pPartAux.getName() == "N/A")
               {
                 pPartAux.setName(sLine.substr(sLine.find("//&p-")+5,sLine.length()-sLine.find("//&p-")+4));
-                cout << "Guardo 1" << endl;
               }
               else
               {
                 sAuxName = sLine.substr(sLine.find("//&p-")+5,sLine.length()-sLine.find("//&p-")+4);
-                cout << sAuxName << endl;
                 for(int i = 0; i < vParts.size(); i++)
                 {
                   if(vParts[i].getName() == sAuxName)
                   {
-                    cout << "Hola" << endl;
+                    vParts.push_back(pPartAux);
                     pPartAux.setName(sAuxName); //&m
                     pPartAux.setItems(vParts[i].getItems()); //&m
                     pPartAux.setBase(vParts[i].getBase()); //&m
@@ -96,15 +94,13 @@ int main () {
                     pPartAux.setDel(vParts[i].getDel());
                     pPartAux.setAdded(vParts[i].getAdded());
                     pPartAux.setTotal(vParts[i].getTotal());
-                    // vParts.erase(vParts.begin()+i);
+                    vParts.erase(vParts.begin()+i);
                     bPartFound = true;
                   }
                 }
 
                 if(!bPartFound)
                 {
-                  cout << "Guardo 2" << endl;
-                  cout << pPartAux.getName() << endl;
                   vParts.push_back(pPartAux);
                   pPartAux.setName(sAuxName);
                   pPartAux.setItems(0);
@@ -186,6 +182,9 @@ int main () {
       cout << endl << sFileName << " no existe\n\n";
     }
   }
+
+
+  vParts.push_back(pPartAux);
 
   for(int i = 0; i < vParts.size(); i++)
   {
