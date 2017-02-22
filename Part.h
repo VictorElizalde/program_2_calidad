@@ -6,7 +6,7 @@
 using namespace std;
 
 //&p-Part
-//&b=6
+//&b=33
 class Part { //&m
 
   public:

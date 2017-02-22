@@ -6,7 +6,7 @@
 using namespace std;
 
 //&p-Operation
-//&b=5
+//&b=21
 class Operation {
 
   public:
@@ -115,8 +115,7 @@ void Operation :: printSummary(vector<Part> vParts, int iLDCTot)
 	cout << "--------------------------------------------------" << endl;
 	OutputFile << "--------------------------------------------------" << endl;
 
-	//&d=3
-	cout << "Total de LDC=" << iLDCTot << endl; //&m
+	cout << "Total de LDC=" << iLDCTot << endl;
 	OutputFile << "Total de LDC=" << iLDCTot << endl; //&m
 
 	OutputFile.close();

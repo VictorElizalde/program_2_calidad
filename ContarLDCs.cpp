@@ -6,6 +6,8 @@ using namespace std;
 #include "Part.h" //&m
 #include "Operation.h"
 
+//&p-main
+//&b=42
 //&d=4
 
 //&i
@@ -26,8 +28,6 @@ string DeleteSpaces(string sLine)
   return sAux;
 }
 
-//&p-main
-//&b=44
 // Control general del programa para obetener los datos y el resultado
 int main () {
 
@@ -172,7 +172,11 @@ int main () {
     {
       cout << endl << sFileName << " no existe\n\n";
     }
-    vParts.push_back(pPartAux);
+
+    if(pPartAux.getName() != "N/A")
+    {
+      vParts.push_back(pPartAux);
+    }
     pPartAux.setName("N/A");
     pPartAux.setItems(0);
     pPartAux.setBase(0);
